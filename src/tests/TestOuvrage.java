@@ -21,6 +21,7 @@ public class TestOuvrage {
         test.testOuvrages();
         test.testTrouver();
         test.testSerie();
+        test.testPays();
     }
 
 
@@ -40,6 +41,16 @@ public class TestOuvrage {
         System.out.println("===============testSerie==============");
     }
 
+    public void testPays(){
+        System.out.println("===============testPays==============");
+        System.out.println("Test avec un code pays INVALIDE (Québec, code : Libre)");
+        Pays quebec = new Pays("Québec","Libre");
+        System.out.println(quebec.toString());
+        System.out.println("Test avec un code pays VALIDE");
+        Pays mexique = new Pays("Mexique","MEX");
+        System.out.println(mexique.toString());
+        System.out.println("===============testPays==============");
+    }
 
     public void testOuvrages() {
         //Deux auteurs deja prets pour les tests...
