@@ -3,10 +3,7 @@ package tests;
 import java.time.LocalDate;
 import java.util.List;
 
-import livres.Ouvrage;
-import livres.Auteur;
-import livres.Pays;
-import livres.Serie;
+import livres.*;
 
 /**
  * CoursPOO 1
@@ -62,18 +59,18 @@ public class TestOuvrage {
 
         //Voici une partie des tests! Il faut en ajouter, pour les fonctionnalités non testées!
         System.out.println("-----Test des constructeurs d'ouvrage et des diverses validations-----------");
-        Ouvrage livreA = new Ouvrage("Titre assez long", john);
+        Ouvrage livreA = new OuvrageAudio("Titre assez long", john);
         System.out.println(livreA);
-        Ouvrage livreB = new Ouvrage("Ti", john);
+        Ouvrage livreB = new OuvrageVideo("Ti", john);
         System.out.println(livreB);
         Ouvrage livreC = new Ouvrage(null, john);
         System.out.println(livreC);
 
         //bibliotheque.Auteur null et valeur par défaut de l'bibliotheque.Auteur
-        Ouvrage livreA1 = new Ouvrage("Titre assez long", null);
+        Ouvrage livreA1 = new OuvrageAudio("Titre assez long", null);
         System.out.println(livreA1);
         //bibliotheque.Auteur fonctionnel
-        Ouvrage livre1 = new Ouvrage("Tout va bien", albertine);
+        Ouvrage livre1 = new OuvrageVideo("Tout va bien", albertine);
         System.out.println(livre1);
 
         //Date null et valeur par défaut de la date
@@ -83,10 +80,10 @@ public class TestOuvrage {
         System.out.println(livre1);
 
         //Test de la validation sur le nb d'exemplaires (valide et non valide)
-        Ouvrage livre2 = new Ouvrage("Tout va bien", albertine, Ouvrage.Format.AUDIO, LocalDate.now(), -10);
+        Ouvrage livre2 = new OuvrageAudio("Tout va bien", albertine, Ouvrage.Format.AUDIO, LocalDate.now(), -10,60, OuvrageAudio.NumeriqueAnalogique.analogique);
         System.out.println(livre2);
 
-        livre2 = new Ouvrage("Tout va bien", albertine, Ouvrage.Format.PAPIER, LocalDate.now(), 20);
+        livre2 = new OuvrageVideo("Tout va bien", albertine, Ouvrage.Format.PAPIER, LocalDate.now(), 20,61,2048);
         System.out.println(livre2);
 
         System.out.println("\n-----Tests des méthodes acheter et vendre-----------");
@@ -107,10 +104,10 @@ public class TestOuvrage {
 
         System.out.println("\n-----Tests de la  méthode equals()-----------");
         //Deux ouvrages égaux
-        Ouvrage livre5 = new Ouvrage("Test", new Auteur("A", "B", usa), Ouvrage.Format.PAPIER, null, 5);
-        Ouvrage livre6 = new Ouvrage("Test", new Auteur("A", "B", usa), Ouvrage.Format.PAPIER, LocalDate.now(), 10);
+        Ouvrage livre5 = new OuvrageAudio("Test", new Auteur("A", "B", usa), Ouvrage.Format.PAPIER, null, 5,60, OuvrageAudio.NumeriqueAnalogique.numerique);
+        Ouvrage livre6 = new OuvrageAudio("Test", new Auteur("A", "B", usa), Ouvrage.Format.PAPIER, LocalDate.now(), 10,60, OuvrageAudio.NumeriqueAnalogique.numerique);
         //Un qui ne l'est pas
-        Ouvrage livre7 = new Ouvrage("Test", new Auteur("Z", "B", usa), Ouvrage.Format.PAPIER, LocalDate.now(), 5);
+        Ouvrage livre7 = new OuvrageAudio("Test", new Auteur("Z", "B", usa), Ouvrage.Format.PAPIER, LocalDate.now(), 5,66, OuvrageAudio.NumeriqueAnalogique.analogique);
 
         System.out.println("Test de la méthode equals d'bibliotheque.Ouvrage:" + livre4.equals(livre5));
         System.out.println("Test de la méthode equals d'bibliotheque.Ouvrage:" + livre4.equals(livre6));
